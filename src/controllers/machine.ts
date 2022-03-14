@@ -116,10 +116,10 @@ const statusEdit = async (req: Request, res: Response): Promise<void> => {
         }
         await Machine.findOneAndUpdate(
             { machine_id: body.machine_id },
-            { is_soldout : body.is_soldout }
+            {$set: {is_soldout : body.is_soldout} }
         )
         res.status(200).json({
-            message: 'Machine updated successfully.',
+            message: `Machine updated successfully.${body.machine_id}`,
             status: true
         })
     } catch (error) {
