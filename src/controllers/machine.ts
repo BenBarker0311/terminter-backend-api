@@ -107,4 +107,23 @@ const deleteAllMachines = async (req: Request, res: Response): Promise<void> => 
         res.status(400).json({ errorMessage: error, status: false })
     }
 }
-export { getMachines, getMachine, addMachine, editMachine, deleteMachine,deleteAllMachines }
+
+const statusEdit = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const body = req.body;
+        const machine= {
+            image_url: body.image_url
+        }
+        await Machine.findOneAndUpdate(
+            { machine_id: body.machine_id },
+            { is_soldout : body.is_soldout }
+        )
+        res.status(200).json({
+            message: 'Machine updated successfully.',
+            status: true
+        })
+    } catch (error) {
+        res.status(400).json({ errorMessage: error, status: false })
+    }
+}
+export { getMachines, getMachine, addMachine, editMachine, deleteMachine,deleteAllMachines, statusEdit }

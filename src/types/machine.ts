@@ -12,5 +12,6 @@ export interface IMachine extends Document {
 	machine_collection: string,
 	like: number,
 	dislike: number,
+	remain: number,
 	date : string
 }

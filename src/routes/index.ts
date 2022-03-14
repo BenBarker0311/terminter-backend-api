@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { getMachines, getMachine, addMachine, editMachine, deleteMachine, deleteAllMachines } from '../controllers/machine'
+import { getMachines, getMachine, addMachine, editMachine, deleteMachine, deleteAllMachines, statusEdit } from '../controllers/machine'
 import { apiGetMachines } from '../api/machine';
 import { apiSetVote } from '../api/vote';
 import { login, register, logout, verify } from '../controllers/user'
@@ -27,4 +27,5 @@ router.post('/delete-all-machines', deleteAllMachines)
 // api
 router.get('/api/get-machines', apiGetMachines)
 router.post('/api/set-vote', apiSetVote)
+router.post('/api/status-edit', statusEdit)
 export default router
