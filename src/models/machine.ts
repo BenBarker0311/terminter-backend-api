@@ -14,7 +14,7 @@ const machineSchema:Schema = new Schema( {
 	user_id: Schema.Types.ObjectId,
 	like: Number,
 	dislike: Number,
-	remain: Number,
+	remain: Boolean,
 	date : { type : Date, default: Date.now }
 })
 
