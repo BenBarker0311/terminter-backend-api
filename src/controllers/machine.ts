@@ -40,7 +40,7 @@ const addMachine = async (req: Request, res: Response): Promise<void> => {
         const isSaved = await Machine.findOne(query)
         if(!isSaved) {
             const body = req.body;
-            const { image_url, machine_type, machine_id, machine_collection, admin, price, total_items, go_live_date, captcha } = body;
+            const { image_url, machine_type, machine_id, machine_collection, admin, price, total_items, go_live_date, captcha, remain} = body;
             const machine: IMachine = new Machine({
                 image_url,
                 machine_type,
@@ -52,7 +52,8 @@ const addMachine = async (req: Request, res: Response): Promise<void> => {
                 machine_collection,
                 captcha,
                 like: 0,
-                dislike: 0
+                dislike: 0,
+                remain: remain
             })
     
             await machine.save()
